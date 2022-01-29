@@ -1,26 +1,21 @@
+
+ // here I use function that return function to tackle double set parentheses arguments, 
+ // see more at "https://stackoverflow.com/questions/18234491/two-sets-of-parentheses-after-function-call"
 function addTogether(x) {
   
   let args = [...arguments];//array of arguments
 
-// use nested swicth metode to run different scenario
+ //return args; 
   switch (args.length){
     case 1:
-      switch (typeof args[0]){
-        case "string":
+      if (typeof args[0] !== "number"){
           return undefined;
-        case "number": 
- // here I use function that return function to tackle double set parentheses arguments, 
- // see more at "https://stackoverflow.com/questions/18234491/two-sets-of-parentheses-after-function-call"
-       	  return function (y) { 
-         	switch (typeof y){
-           		case "object":
+      } else { return function (y) {
+         	if (typeof y !== "number"){
              		return undefined;
-             		break;
-           		case "number":
-             		return x+y;
+           } else {return x+y;}
          					}
-         				};
-      		}
+         				}
     case 2:
        if (typeof args[0] && typeof args[1] !== "number" ) {
        return undefined} else {return args[0] + args[1]
@@ -30,4 +25,4 @@ function addTogether(x) {
 } 
 let sumTwoAnd = addTogether(2);
 console.log(addTogether(2, 3));
-console.log(sumTwoAnd(6))
+//console.log(sumTwoAnd(6))
